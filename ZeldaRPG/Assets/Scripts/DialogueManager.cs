@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour {
 		if (dialogActive && Input.GetKeyDown (KeyCode.Space)) {
 			dBox.SetActive (false);
 			dialogActive = false;
+			Time.timeScale = 1;
 		}
 	}
 
@@ -25,5 +26,6 @@ public class DialogueManager : MonoBehaviour {
 		dialogActive = true;
 		dBox.SetActive (true);
 		dText.text = dialogue;
+		Time.timeScale = 0;
 	}
 }

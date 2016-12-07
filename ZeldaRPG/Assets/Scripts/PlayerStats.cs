@@ -26,20 +26,26 @@ public class PlayerStats : MonoBehaviour {
 			currentLevel++;
 		}
 		if (currentLevel == 1 && !level1) {
-			dMan.ShowBox ("HEY! LISTEN! Sua aventura começou!!!\nUtilize a tecla \"J\" para atacar os monstros.");
+			dMan.ShowBox ("HEY! LISTEN! Sua aventura começou!\nUtilize a tecla \"J\" para atacar e \"G\" para bloquear. Sinto uma Magia estranha logo abaixo...");
 			level1 = true;
 		}
 		if (currentLevel == 5 && !level5) {
-			dMan.ShowBox ("HEY! LISTEN! Parabens!!! Voce atingiu o Level 5!!!\nFoi desbloqueado o Golpe Furacão.\nUtilize a tecla \"K\" para usar esse novo poder.");
+			dMan.ShowBox ("HEY! LISTEN! Parabens! Voce atingiu o Level 5!\nFoi desbloqueado o Golpe Furacão.\nUtilize a tecla \"K\" para usar esse novo poder.");
 			level5 = true;
 		}
 		if (currentLevel == 10 && !level10) {
-			dMan.ShowBox ("HEY! LISTEN! Parabens!!! Voce atingiu o Level 10!!!\nFoi desbloqueado o Arco e Flecha.\nUtilize a tecla \"H\" para atacar de longe.");
+			dMan.ShowBox ("HEY! LISTEN! Parabens! Voce atingiu o Level 10!\nFoi desbloqueado o Arco e Flecha.\nUtilize a tecla \"H\" para atacar de longe.");
 			level10 = true;
 		}
 	}
 
 	public void AddExperience(int experienceToAdd){
 		currentExp += experienceToAdd;
+	}
+
+	public void ZerarTudo(){
+		level10 = false;
+		level5 = false;
+		level1 = false;
 	}
 }

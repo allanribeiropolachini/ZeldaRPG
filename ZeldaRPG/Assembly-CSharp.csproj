@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Bounds.cs" />
+     <Compile Include="Assets\Scripts\BoxFairy.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
      <Compile Include="Assets\Scripts\DialogueManager.cs" />
@@ -52,6 +54,7 @@
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\EnemySlimeController.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
+     <Compile Include="Assets\Scripts\GanonController.cs" />
      <Compile Include="Assets\Scripts\HUD.cs" />
      <Compile Include="Assets\Scripts\HurtEnemy.cs" />
      <Compile Include="Assets\Scripts\HurtPlayer.cs" />

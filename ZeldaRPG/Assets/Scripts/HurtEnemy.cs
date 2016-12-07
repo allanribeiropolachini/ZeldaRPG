@@ -23,5 +23,20 @@ public class HurtEnemy : MonoBehaviour {
 			var clone = (GameObject) Instantiate(damageNumber, hitPoint.position, Quaternion.Euler (Vector3.zero));
 			clone.GetComponent<FloatingNumbers> ().damageNumber = damageToGive;
 		}
+		if (other.gameObject.tag == "Box") {
+			other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
+			//var clone = (GameObject) Instantiate(damageNumber, hitPoint.position, Quaternion.Euler (Vector3.zero));
+			//clone.GetComponent<FloatingNumbers> ().damageNumber = damageToGive;
+		}
+		if (other.gameObject.tag == "BoxFairy") {
+			other.gameObject.GetComponent<BoxFairy>().HurtEnemy(damageToGive);
+			//var clone = (GameObject) Instantiate(damageNumber, hitPoint.position, Quaternion.Euler (Vector3.zero));
+			//clone.GetComponent<FloatingNumbers> ().damageNumber = damageToGive;
+		}
+		if (other.gameObject.tag == "Grass") {
+			other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
+			//var clone = (GameObject) Instantiate(damageNumber, hitPoint.position, Quaternion.Euler (Vector3.zero));
+			//clone.GetComponent<FloatingNumbers> ().damageNumber = damageToGive;
+		}
 	}
 }

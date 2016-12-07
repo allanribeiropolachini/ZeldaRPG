@@ -21,7 +21,7 @@ public class SelfDestruct : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag != "Player" && other.gameObject.tag != "Rupee") {
+		if (other.gameObject.tag != "Player" && other.gameObject.tag != "Rupee" && other.gameObject.tag != "BoundsCamera") {
 			Destroy (gameObject);
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
@@ -14,7 +15,11 @@ public class UIManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ( ) {
+		if(SceneManager.GetActiveScene().name == "TheEnd")
+			transform.GetChild (2).gameObject.SetActive (false);
+		else
+			transform.GetChild (2).gameObject.SetActive (true);
 		levelText.text = "Level: " + thePS.currentLevel;
 	}
 }
