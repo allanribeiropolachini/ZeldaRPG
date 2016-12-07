@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour {
 
 	public int currentExp;
 
+	//public bool checkEXPstart;
+
 	public int[] toLevelUp;
 
 	private DialogueManager dMan;
@@ -26,6 +28,7 @@ public class PlayerStats : MonoBehaviour {
 			currentLevel++;
 		}
 		if (currentLevel == 1 && !level1) {
+			//GameObject.FindWithTag ("Player").transform.rotation = Quaternion.Euler (0f, 0f, 90f);
 			dMan.ShowBox ("HEY! LISTEN! Sua aventura começou!\nUtilize a tecla \"J\" para atacar e \"G\" para bloquear. Sinto uma Magia estranha logo abaixo...");
 			level1 = true;
 		}
@@ -48,4 +51,13 @@ public class PlayerStats : MonoBehaviour {
 		level5 = false;
 		level1 = false;
 	}
+
+	/*void LateUpdate(){
+		if (currentExp == 0 && !checkEXPstart) {
+			GameObject.FindWithTag ("Player").transform.rotation = Quaternion.Euler (0f, 0f, 360f);
+			GameObject.FindWithTag ("Player").transform.GetChild (0).transform.rotation = Quaternion.Euler (0f, 0f, 0f);
+			GameObject.FindWithTag ("Player").transform.GetChild (1).transform.rotation = Quaternion.Euler (0f, 0f, 0f);
+			checkEXPstart = true;
+		}
+	}*/
 }

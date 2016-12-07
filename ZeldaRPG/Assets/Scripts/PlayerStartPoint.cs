@@ -12,9 +12,11 @@ public class PlayerStartPoint : MonoBehaviour {
 
 	public static bool startexist;
 
+	public static bool chegueiTemplo1;
+
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("VALOR DO STARTEXIST: " + startexist);
+		//Debug.Log ("VALOR DO STARTEXIST: " + startexist);
 		if (startexist == false) {
 			thePlayer = FindObjectOfType<PlayerController> ();
 			startexist = true;
@@ -22,10 +24,13 @@ public class PlayerStartPoint : MonoBehaviour {
 
 		//thePlayer = FindObjectOfType<LoadNewArea> ().thePlayer;
 
-		Debug.Log ("Vou entrar NO STARTPOINT com o objeto: " + thePlayer.GetInstanceID ());
-		Debug.Log(" valores startpoint: " + thePlayer.startPoint + ", e pointname: " + pointname);
+		//Debug.Log ("Vou entrar NO STARTPOINT com o objeto: " + thePlayer.GetInstanceID ());
+		//Debug.Log(" valores startpoint: " + thePlayer.startPoint + ", e pointname: " + pointname);
 		if (thePlayer.startPoint == pointname) {
-			Debug.Log ("Entrei Aqui");
+			if (gameObject.name == "StartPointTemplo1" && !chegueiTemplo1) {
+				FindObjectOfType<DialogueManager> ().ShowBox ("HEY! LISTEN! Esse é o Templo do Tempo... Tenha cuidado, pois tem muitas armadilhas lá.");
+			}
+			//Debug.Log ("Entrei Aqui");
 			thePlayer.transform.position = transform.position;
 			thePlayer.lastMove = startDirection;
 

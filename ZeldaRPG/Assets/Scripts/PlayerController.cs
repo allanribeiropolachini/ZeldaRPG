@@ -27,10 +27,12 @@ public class PlayerController : MonoBehaviour {
 	private float BlessattackTimeCounter;
 
 	public int HpCount;
+	public int TESThearts;
+
 
 	private bool BlessCD;
 	public float BlessCDTime;
-	private float BlessCDTimeCounter;
+	public float BlessCDTimeCounter;
 
 	private bool Bowattacking;
 	public float BowattackTime;
@@ -54,6 +56,8 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator>();
 		myRigidbody = GetComponent<Rigidbody2D> ();
+
+		//transform.rotation = Quaternion.Euler (0f, 0f, 90f);
 
 		HpCount = 10;
 
@@ -144,7 +148,14 @@ public class PlayerController : MonoBehaviour {
 
 			//Bless
 			if (Input.GetKeyDown (KeyCode.B) && !Shieldattacking && playerStarted && Fairyunlock && !BlessCD) {
-				FindObjectOfType<PlayerHealthManager> ().playerCurrentHealth += HpCount;
+				TESThearts = FindObjectOfType<PlayerHealthManager> ().playerCurrentHealth + HpCount;
+				if(TESThearts > 50)
+					FindObjectOfType<PlayerHealthManager> ().playerCurrentHealth = 50;
+				else {
+					FindObjectOfType<PlayerHealthManager> ().playerCurrentHealth += HpCount;
+				}
+
+
 				//Life_player = GetComponent<PlayerHealthManager> ();
 				//Life_player.SetMaxHealth();
 
@@ -240,4 +251,7 @@ public class PlayerController : MonoBehaviour {
 			anim.SetFloat ("LastMoveY", lastMove.y);
 		}
 	}
+
+
+
 }

@@ -28,6 +28,7 @@ public class CameraController : MonoBehaviour {
 	private float halfHeight;
 	private float halfWidth;
 
+	public bool Revived;
 
 	// Use this for initialization
 	void Start () {
@@ -58,16 +59,23 @@ public class CameraController : MonoBehaviour {
 			FindObjectOfType<PlayerController> ().startPoint = "House Out";
 			FindObjectOfType<PlayerController> ().HpCount = 10;
 			FindObjectOfType<PlayerController> ().Fairyunlock = false;
+			FindObjectOfType<PlayerController> ().BlessCDTimeCounter = 0;
 			GameObject.FindWithTag("Canvas").transform.GetChild (3).gameObject.SetActive (false);
+
+
 			moneyManager = FindObjectOfType<MoneyManager> ();
 			//anim = FindObjectOfType<Animator>();
 			//anim.enabled = true;
+
+			Revived = true;
+
 			moneyManager.currentGold = 0;
 			PlayerPrefs.SetInt ("CurrentMoney", 0);
 			moneyManager.moneyText.text = "Rupee: 0";
 			ps.currentExp = 0;
 			ps.currentLevel = 0;
 			ps.ZerarTudo ();
+
 			phm.SetMaxHealth();
 			followIsDead = false;
 		}
@@ -83,6 +91,18 @@ public class CameraController : MonoBehaviour {
 		boundBox = newBounds;
 		minBounds = boundBox.bounds.min;
 		maxBounds = boundBox.bounds.max;
+	}
+
+	void LateUpdate(){
+		//Debug.Log ("Valor do REVIVED: " + Revived + "Valor do antigo rotation: " + followTarget.transform.rotation);
+		if (Revived) {
+			followTarget.transform.rotation = Quaternion.Euler (0f, 0f, -90f);
+			followTarget.transform.GetChild (0).transform.rotation = Quaternion.Euler (0f, 0f, 0f);
+			followTarget.transform.GetChild (1).transform.rotation = Quaternion.Euler (0f, 0f, 0f);
+			Revived = false;
+			//Debug.Log ("NOVO ROTATION: " + followTarget.transform.rotation);
+		}
+
 	}
 
 }

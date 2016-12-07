@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealthManager : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class EnemyHealthManager : MonoBehaviour {
 	void Start () {
 		CurrentHealth = MaxHealth;
 
-		if (gameObject.name == "boxsprite_open") {
+		if (gameObject.name == "boxsprite_open" || gameObject.name == "boxsprite_open_unlock") {
 			rend = GetComponent<Renderer>();
 		}
 
@@ -41,7 +42,31 @@ public class EnemyHealthManager : MonoBehaviour {
 				Boxposition += new Vector3 (0f, -2f, 0f);
 				Instantiate (Rupee, Boxposition, transform.rotation);
 				boxopenned = true;
-			} else if (gameObject.name != "boxsprite_open") {
+			} else if (gameObject.name == "boxsprite_open_unlock" && boxopenned == false) {
+				rend.enabled = true;
+				//Instantiate (Rupee, transform.position, transform.rotation);
+				FindObjectOfType<DialogueManager>().ShowBox ("HEY! LISTEN! Parece que a proxima sala foi desbloqueada...\nMas acho esse caminho nao tera volta...");
+				FindObjectOfType<LoadNewArea> ().templo2 = true;
+				//thePlayerStats.AddExperience (expToGive);
+				boxopenned = true;
+			} else if (gameObject.name == "timeLORD") {
+				FindObjectOfType<DialogueManager>().ShowBox ("HEY! LISTEN! ...uma dica pra voce, \"Rosas sao ...\"");
+				FindObjectOfType<LoadNewArea> ().templo3 = true;
+
+				Boxposition = transform.position; 
+				Boxposition += new Vector3 (0f, -2f, 0f);
+				Instantiate (Rupee, Boxposition, transform.rotation);
+				thePlayerStats.AddExperience (expToGive);
+				Destroy (gameObject);
+			}else if (gameObject.name == "spritesoldado_0") {
+				FindObjectOfType<GanonController> ().soldados -= 1f;
+				Instantiate (Rupee, transform.position, transform.rotation);
+				Destroy (gameObject);
+				thePlayerStats.AddExperience (expToGive);
+			}else if (gameObject.name == "Ganon") {
+				Destroy (gameObject);
+				SceneManager.LoadScene ("HappyEnd");
+			}else if (gameObject.name != "boxsprite_open") {
 				Instantiate (Rupee, transform.position, transform.rotation);
 				Destroy (gameObject);
 				thePlayerStats.AddExperience (expToGive);

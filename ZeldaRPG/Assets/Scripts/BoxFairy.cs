@@ -23,7 +23,7 @@ public class BoxFairy : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (CurrentHealth <= 0 && !boxopenned) {
+		if (CurrentHealth <= 0 && !boxopenned && FindObjectOfType<PlayerController>().Fairyunlock == false) {
 				rend.enabled = true;
 				Boxposition = transform.position; 
 				//Boxposition += new Vector3 (0f, -2f, 0f);

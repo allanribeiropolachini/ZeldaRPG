@@ -7,6 +7,9 @@ public class MoneyManager : MonoBehaviour {
 	public Text moneyText;
 	public int currentGold;
 
+	public bool NotificacaoFadinha;
+	public bool naorepetir;
+
 	public static bool gamestarted;
 	// Use this for initialization
 	void Start () {
@@ -28,7 +31,11 @@ public class MoneyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (currentGold >= 20 && NotificacaoFadinha && !naorepetir) {
+			FindObjectOfType<DialogueManager> ().ShowBox ("Hey!Listen! Com essas 20 rupees eu consigo quebrar a barreira para entrar no Templo do Tempo");
+			FindObjectOfType<LoadNewArea> ().templo1 = true;
+			naorepetir = true;
+		}
 	}
 
 	public void AddMoney(int goldToAdd){

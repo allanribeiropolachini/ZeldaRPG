@@ -25,7 +25,7 @@ public class PlayerShooting : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.H) && cooldownTimer <= 0 && levelscript.currentLevel >= 10) {
 			//SHOOT!
-			Debug.Log("Atirei!");
+			//Debug.Log("Atirei!");
 			cooldownTimer = fireDelay;
 
 			Vector3 offset = transform.rotation * arrowOffset;
