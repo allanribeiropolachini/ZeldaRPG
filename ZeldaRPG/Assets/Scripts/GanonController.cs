@@ -144,6 +144,8 @@ public class GanonController : MonoBehaviour {
 		} else if (soldados == 0) {
 			gameObject.tag = "Enemy";
 			soldadoseliminados = true;
+			GameObject.Find ("GradeGanon").SetActive (false);
+			FindObjectOfType<DialogueManager> ().ShowBox ("HEY! LISTEN! TA SAINDO DA JAULA UM MONSTRO!!!");
 			Debug.Log ("Soldados ELIMINADOS");
 		}
 		/*//Spear ATTACK

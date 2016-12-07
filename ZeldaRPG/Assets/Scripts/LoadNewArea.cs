@@ -50,6 +50,8 @@ public class LoadNewArea : MonoBehaviour {
 				}
 		}else if (gameObject.name == "exitTemplo3") {
 			if (templo3) {
+				GameObject.FindWithTag("Canvas").transform.GetChild (2).gameObject.SetActive (false);
+				GameObject.FindWithTag("Canvas").transform.GetChild (4).gameObject.SetActive (true);
 				thePlayer.startPoint = exitPoint;
 				SceneManager.LoadScene (levelToLoad);
 			} else {
